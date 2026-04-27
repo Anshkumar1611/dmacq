@@ -1,0 +1,28 @@
+  services:
+  - type: web
+    name: dmacq-api
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build --workspace @dmacq/types && npm run build --workspace @dmacq/api
+    startCommand: npm run start --workspace @dmacq/api
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: MONGODB_URI
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
+
+  - type: web
+    name: dmacq-web
+    runtime: static
+    plan: free
+    buildCommand: npm ci && npm run build --workspace @dmacq/types && npm run build --workspace @dmacq/web
+    staticPublishPath: apps/web/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        sync: false
