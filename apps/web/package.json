@@ -1,0 +1,30 @@
+{
+  "name": "@dmacq/web",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "postinstall": "node ./scripts/ensure-cypress.mjs",
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview",
+    "test": "start-server-and-test 'vite --host 127.0.0.1 --port 5173' http://127.0.0.1:5173 'node ./scripts/cypress-run.mjs'",
+    "test:e2e": "npm run test",
+    "cypress:open": "cypress open",
+    "lint": "echo \"no lint\""
+  },
+  "dependencies": {
+    "@dmacq/types": "*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "cypress": "^15.14.1",
+    "start-server-and-test": "^2.0.10",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3"
+  }
+}
