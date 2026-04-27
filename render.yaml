@@ -2,7 +2,6 @@
   - type: web
     name: dmacq-api
     runtime: node
-    plan: free
     buildCommand: npm ci && npm run build --workspace @dmacq/types && npm run build --workspace @dmacq/api
     startCommand: npm run start --workspace @dmacq/api
     envVars:
@@ -16,7 +15,6 @@
   - type: web
     name: dmacq-web
     runtime: static
-    plan: free
     buildCommand: npm ci && npm run build --workspace @dmacq/types && npm run build --workspace @dmacq/web
     staticPublishPath: apps/web/dist
     routes:
